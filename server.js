@@ -8,9 +8,13 @@ const cors = require("cors");
 const verifyToken = require('./middlewares/verifyTokenMiddleware');
 const app = express();
 
+import swaggerUi from 'swagger-ui-express';
+import swaggerDoc from './swaggerGameStore.json' assert {type: 'json'};
+
 
 app.use(express.json());
 app.use(cors());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 
 
 // app.use('/api', verifyToken, itemRoute)
@@ -20,6 +24,8 @@ app.use(cors());
 app.use('/api', itemRoute)
 app.use('/api', orderRoute)
 app.use('/api', userRoute)
+
+
 
 
 app.get("/", (req, res) => {

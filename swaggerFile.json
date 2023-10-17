@@ -1,0 +1,106 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Capstone Project API",
+      "description": "API documentation for Item, Order, and User."
+    },
+    "basePath": "/api",
+    "paths": {
+      "/items": {
+        "get": {
+          "summary": "Get a list of items",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Item"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/orders": {
+        "get": {
+          "summary": "Get a list of orders",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Order"
+                }
+              }
+            }
+          }
+        }
+      },
+      "/users": {
+        "get": {
+          "summary": "Get a list of users",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Item": {
+        "type": "object",
+        "properties": {
+          "itemId": { "type": "string" },
+          "productName": { "type": "string" },
+          "productType": { "type": "string" },
+          "productDesc": { "type": "string" },
+          "productImg": { "type": "string" },
+          "serialNo": { "type": "string" },
+          "location": { "type": "string" },
+          "userId": { "type": "string" },
+          "userName": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "properties": {
+          "orderId": { "type": "string" },
+          "userId": { "type": "string" },
+          "userName": { "type": "string" },
+          "status": { "type": "string" },
+          "tracking": { "type": "string" },
+          "orderedProduct": { "type": "array", "items": { "type": "string" } },
+          "items": { "type": "array", "items": { "$ref": "#/definitions/Item" } },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "userId": { "type": "string" },
+          "name": { "type": "string" },
+          "userType": { "type": "string" },
+          "company": { "type": "string" },
+          "Address": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "phone": { "type": "string" },
+          "createdAt": { "type": "string", "format": "date-time" },
+          "updatedAt": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+  
